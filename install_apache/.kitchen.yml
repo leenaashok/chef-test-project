@@ -1,0 +1,28 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo 
+   always_update_cookbooks: true
+   product_version: 14
+
+   client_rb:
+   chef_license: accept
+   http_proxy: http://proxy-l.lmr.eup.gm.com:8080
+   https_proxy: https://proxy-l.lmr.eup.gm.com:8080
+	  
+ 
+verifier:
+  name: inspec
+
+
+platforms:
+  - name: ubuntu-18.04
+  
+
+suites:
+  - name: default
+    run_list:
+      - recipe[install_apache]
+    attributes:
